@@ -1,0 +1,40 @@
+
+---- Cenario do projeto----
+    Desenvolvimento de um sistema organizador de tarefas, 
+    que auxiliara o usuario na criação e gerencimento 
+    de suas atividades cotidianas. Solucionando os problemas de procrastinação, 
+    esquecimento de tarefas, falta de organização, entre outros.
+
+
+---- Funcionalidade principais ----
+    Adicionar e editar tarefas
+    Classificação por categoria e status
+    Lembretes e notificações
+    Interface Amigavel
+
+---- Tecnologias ----
+    Python
+    Sqlite
+
+---- Recursos e restrições ----
+    Recursos disponiveis:
+    
+    Equipe
+    Flavio - Frontend e UX
+    Eduarda - Backend e documentação
+    Jenifer - testes e documentação
+
+    restrições:
+    Tempo
+
+
+----Resultados esperados ----
+    Criar uma ferramenta funcional e fluida que facilite a usabilidade do usuario
+    
+
+
+---- Potenciais desafios ----
+    organização de cronograma
+    Desenvolvimento de um template usando os conceitos de UX
+
+
