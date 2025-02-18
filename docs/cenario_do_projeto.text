@@ -1,40 +1,95 @@
 
----- Cenario do projeto----
-    Desenvolvimento de um sistema organizador de tarefas, 
-    que auxiliara o usuario na criação e gerencimento 
-    de suas atividades cotidianas. Solucionando os problemas de procrastinação, 
-    esquecimento de tarefas, falta de organização, entre outros.
+----Resumo do Tema----
+    O desenvolvimento de um sistema organizador de tarefas visa proporcionar uma solução 
+    eficaz para otimizar a gestão das atividades diárias do usuário, promovendo uma abordagem 
+    estruturada e funcional para o planejamento e acompanhamento de suas responsabilidades.
+    Este sistema atua diretamente no combate à procrastinação, à falha de memorização 
+    e à desorganização, ao proporcionar um ambiente intuitivo e de fácil acesso, 
+    onde o usuário pode não apenas criar e gerenciar suas tarefas, mas também priorizá-las, 
+    estabelecer prazos e monitorar seu progresso. 
+    Ao integrar ferramentas de organização e lembretes, o sistema busca aumentar a 
+    produtividade, reduzir a sobrecarga cognitiva e, consequentemente, 
+    melhorar a eficiência nas tarefas cotidianas, favorecendo o alcance 
+    de metas e o desenvolvimento de hábitos positivos.
+
+---- Público-Alvo ----
+
+    O público-alvo do sistema é, primordialmente, composto por estudantes universitários, 
+    um grupo que frequentemente enfrenta dificuldades com a gestão do tempo e organização 
+    das suas atividades diárias. O sistema foi projetado para atender às necessidades 
+    específicas desse público, visando aumentar sua produtividade e eficácia no 
+    cumprimento das tarefas acadêmicas. Além disso, a ferramenta pode se estender 
+    a outros indivíduos que busquem uma maneira eficiente de organizar suas 
+    responsabilidades cotidianas, como profissionais e professores.
+
+---- Método de Pesquisa Utilizado ----
+    Para identificar as funcionalidades mais relevantes para o público-alvo, foi adotada a 
+    metodologia de pesquisa baseada em questionários online. Este método se mostrou eficaz 
+    para alcançar um público amplo e diversificado de estudantes universitários. 
+    Utilizamos a plataforma Google Forms para facilitar a criação, distribuição e 
+    análise dos dados. Através dessa abordagem, foi possível coletar informações 
+    diretas sobre as preferências, dificuldades e expectativas dos usuários em relação 
+    à gestão de suas tarefas cotidianas. Os dados obtidos permitiram um entendimento 
+    aprofundado das necessidades do público-alvo, contribuindo para o desenvolvimento 
+    de funcionalidades que garantem a eficiência e a personalização do sistema.
+
+---- Requisitos Identificados ----
+    Com base nas respostas obtidas nos questionários e nas 
+    validações dos protótipos, foram identificadas as funcionalidades 
+    principais que o sistema deveria oferecer:
+    Adicionar e Editar Tarefas: Permitir ao usuário criar, modificar e excluir tarefas com facilidade.
+    Classificação por Categoria e Status: A possibilidade de organizar as 
+    tarefas de acordo com sua natureza (por exemplo, acadêmicas, pessoais) 
+    e status (pendente, em progresso, concluída).
+    Lembretes e Notificações: Alertas automáticos para garantir que o usuário 
+    não esqueça de seus compromissos e prazos.
+    Interface Amigável e Intuitiva: Um design que facilite a navegação 
+    e a interação com o sistema, com um layout claro e simples.
+
+---- Processo de Elicitação ----
+
+    No processo de elicitação, o método escolhido foi a prototipação, 
+    com a criação de protótipos rápidos para validação com o público-alvo. 
+    Após a análise das respostas dos questionários online, 
+    optamos por apresentar modelos de interface simplificados, 
+    com funcionalidades-chave, para obter feedback direto dos usuários. 
+    Essa abordagem de prototipação permitiu a iteração rápida e a adaptação 
+    do design e das funcionalidades, garantindo que o sistema atendesse melhor 
+    às necessidades reais dos estudantes. A prototipação também possibilitou a 
+    identificação de ajustes e melhorias antes do desenvolvimento completo, 
+    minimizando riscos e otimizando o processo de criação.
 
 
----- Funcionalidade principais ----
-    Adicionar e editar tarefas
-    Classificação por categoria e status
-    Lembretes e notificações
-    Interface Amigavel
+---- Especificação Final dos Requisitos ----
 
----- Tecnologias ----
-    Python
-    Sqlite
+    A partir dos dados coletados e da validação dos protótipos, 
+    os requisitos finais foram definidos, levando em consideração as 
+    principais necessidades dos usuários:
+    Cadastro de Tarefas: O sistema deve permitir que o usuário crie, 
+    edite e apague tarefas, atribuindo a elas categorias e prazos.
+    Gestão de Prioridades: O usuário poderá marcar as tarefas com 
+    diferentes níveis de prioridade, facilitando a organização das atividades mais urgentes.
+    Notificações e Alertas: Lembretes automáticos serão enviados antes dos prazos 
+    das tarefas, para garantir que o usuário esteja ciente de suas responsabilidades.
+    Interface Simples e Clara: A interface gráfica deve ser intuitiva, 
+    com fácil navegação e recursos visuais que ajudem o usuário a compreender e utilizar o sistema de forma eficiente.
 
----- Recursos e restrições ----
-    Recursos disponiveis:
+
+----Tecnologias----
+
+    Python: Linguagem de programação utilizada para a construção do sistema,
+    devido à sua versatilidade, simplicidade e amplo suporte para bibliotecas de interfaces gráficas.
+    SQLite: Banco de dados leve e eficiente utilizado para 
+    rmazenar as tarefas e informações do usuário, proporcionando uma solução simples para a persistência dos dados.
+    bibliotecas: tkinter
     
-    Equipe
-    Flavio - Frontend e UX
-    Eduarda - Backend e documentação
-    Jenifer - testes e documentação
+---- Recursos e Restrições ----
 
-    restrições:
-    Tempo
+    Recursos Disponíveis:
 
-
-----Resultados esperados ----
-    Criar uma ferramenta funcional e fluida que facilite a usabilidade do usuario
-    
-
-
----- Potenciais desafios ----
-    organização de cronograma
-    Desenvolvimento de um template usando os conceitos de UX
-
-
+    Flavio: Responsável pelo Frontend e design da interface, 
+    garantindo uma experiência de usuário fluida e agradável.
+    Eduarda: Responsável pelo Backend e documentação técnica, 
+    assegurando que a lógica do sistema esteja bem implementada e documentada.
+    Jenifer: Responsável pelos testes e pela documentação, 
+    realizando testes de funcionalidade e garantindo a qualidade do sistema.
