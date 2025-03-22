@@ -1,13 +1,15 @@
-from model import Task, TaskModel
+from model import TaskModel  
+from task_factories import LowPriorityTaskFactory, MediumPriorityTaskFactory, HighPriorityTaskFactory
 from view import TaskView
 import tkinter as tk
 from tkinter import simpledialog, messagebox 
 from datetime import datetime
 from tkcalendar import Calendar
+
 class TaskController:
     def __init__(self, root):
-        self.model = TaskModel()
-        self.view = TaskView(root, self)
+        self.model = TaskModel()  
+        self.view = TaskView(root, self) 
 
     def login(self):
         username = self.view.username_entry.get()
@@ -18,9 +20,11 @@ class TaskController:
         else:
             messagebox.showerror("Erro", "Nome de usuário ou senha inválidos.")
 
+    def show_tasks(self):
+            self.view.update_task_list(self.model.tasks)
+
     def logout(self):
         self.view.main_frame.pack_forget()
-        self.view.create_login_screen()
 
     def add_task(self):
         task_window = tk.Toplevel(self.view.root)
@@ -54,19 +58,30 @@ class TaskController:
             due_date = datetime.strptime(date, "%d/%m/%Y") if date else None
 
             if task and priority and category:
-                new_task = Task(task, priority, category, due_date)
+                # Aqui, criamos a fábrica baseada na prioridade
+                if priority.lower() == "baixa":
+                    factory = LowPriorityTaskFactory()
+                elif priority.lower() == "média":
+                    factory = MediumPriorityTaskFactory()
+                elif priority.lower() == "alta":
+                    factory = HighPriorityTaskFactory()
+                else:
+                    messagebox.showerror("Erro", "Prioridade inválida!")
+                    return
+
+                new_task = factory.create_task(task, priority, category, due_date)
                 self.model.add_task(new_task)
                 self.view.update_task_list(self.model.tasks)
                 task_window.destroy()
 
         save_button = tk.Button(task_window, text="Salvar Tarefa", command=save_task, bg="#4CAF50", fg="white", font=self.view.custom_font)
         save_button.pack(pady=10)
-
+        
     def remove_task(self):
-        index = self.view.get_selected_task_index()
-        if index is not None:
-            self.model.remove_task(index)
-            self.view.update_task_list(self.model.tasks)
+            index = self.view.get_selected_task_index()
+            if index is not None:
+                self.model.remove_task(index)
+                self.view.update_task_list(self.model.tasks)
 
     def clear_tasks(self):
         if messagebox.askyesno("Confirmação", "Deseja limpar todas as tarefas?"):
@@ -81,6 +96,3 @@ class TaskController:
             if new_task:
                 task.task = new_task
                 self.view.update_task_list(self.model.tasks)
-
-    def show_tasks(self):
-        self.view.update_task_list(self.model.tasks)
