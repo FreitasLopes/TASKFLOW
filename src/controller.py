@@ -13,12 +13,11 @@ class TaskController:
 
     def login(self):
         username = self.view.username_entry.get()
-        password = self.view.password_entry.get()
 
-        if username and password:
+        if username:
             self.view.show_tasks_screen(username)
         else:
-            messagebox.showerror("Erro", "Nome de usuário ou senha inválidos.")
+            messagebox.showerror("Erro", "Nome de usuário inválido.")
 
     def show_tasks(self):
         self.view.update_task_list(self.model.tasks)

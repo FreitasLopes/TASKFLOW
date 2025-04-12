@@ -24,12 +24,6 @@ class TaskView:
         self.username_entry = tk.Entry(self.login_frame, font=self.custom_font)
         self.username_entry.pack(pady=5)
 
-        self.password_label = tk.Label(self.login_frame, text="Senha:", font=self.custom_font, bg="#f4f4f5", fg="#4A4A4A")
-        self.password_label.pack(pady=5)
-
-        self.password_entry = tk.Entry(self.login_frame, font=self.custom_font, show="*")
-        self.password_entry.pack(pady=5)
-
         self.login_button = tk.Button(self.login_frame, text="Login", command=self.controller.login, bg="#3D9BE9", fg="white", font=self.custom_font, relief="flat", width=20)
         self.login_button.pack(pady=30)
 
