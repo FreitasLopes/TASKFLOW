@@ -1,39 +1,51 @@
-import datetime
+from datetime import datetime
+from database import create_table, add_task, remove_task, update_task, get_all_tasks, clear_all_tasks
 
 class Task:
-    def __init__(self, task, priority, category, due_date):
+    def __init__(self, id, task, priority, category, due_date):
+        self.id = id
         self.task = task
         self.priority = priority
         self.category = category
         self.due_date = due_date
-        self.status = "Pendente"
-        self.created_at = datetime.datetime.now()
-        self.color = self.get_color_by_priority()
-
-    def get_color_by_priority(self):
-        if self.priority.lower() == "alta":
-            return "#FF5722"
-        elif self.priority.lower() == "mÃ©dia":
-            return "#FFEB3B"
-        elif self.priority.lower() == "baixa":
-            return "#8BC34A"
-        return "#ffffff"
 
 class TaskModel:
     def __init__(self):
-        self.tasks = []
+        create_table()
+        self.tasks = self.load_tasks()
+
+    def load_tasks(self):
+        task_data = get_all_tasks()
+        return [
+            Task(
+                data["id"],
+                data["task"],
+                data["priority"],
+                data["category"],
+                data["due_date"]
+            ) for data in task_data
+        ]
 
     def add_task(self, task):
-        self.tasks.append(task)
+        add_task(task.task, task.priority, task.category, task.due_date)
+        self.tasks = self.load_tasks()
 
     def remove_task(self, index):
-        if 0 <= index < len(self.tasks):
-            del self.tasks[index]
+        task = self.tasks[index]
+        remove_task(task.id)
+        self.tasks.pop(index)
+
+    def update_task(self, index, updated_task):
+        task = self.tasks[index]
+        update_task(
+            task.id,
+            updated_task.task,
+            updated_task.priority,
+            updated_task.category,
+            updated_task.due_date
+        )
+        self.tasks[index] = updated_task
 
     def clear_tasks(self):
+        clear_all_tasks()
         self.tasks.clear()
-
-    def edit_task(self, index, new_task):
-        if 0 <= index < len(self.tasks):
-            self.tasks[index].task = new_task
-
