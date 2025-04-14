@@ -57,11 +57,11 @@ class TaskView:
         self.todo_frame = tk.Frame(self.main_frame)
         self.todo_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10)
 
-        self.done_frame = tk.Frame(self.main_frame)
-        self.done_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10)
-
         self.progress_frame = tk.Frame(self.main_frame)
         self.progress_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10)
+
+        self.done_frame = tk.Frame(self.main_frame)
+        self.done_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10)
 
         # Backlog
         self.back_log = tk.Label(self.backlog_frame, text="Backlog", font=("Arial", 12, "bold"))
@@ -79,6 +79,14 @@ class TaskView:
         self.btn_remove = tk.Button(self.todo_frame, text="Remover Tarefa", command=self.controller.remove_task, bg="#f44336", fg="white", font=self.custom_font, relief="flat", width=15)
         self.btn_remove.pack(side=tk.LEFT, padx=30, pady=10)
 
+        # Done
+        self.done = tk.Label(self.done_frame, text='Done', font=("Arial", 12, "bold"))
+        self.done.pack()
+        self.done_listbox = tk.Listbox(self.done_frame, width=30, height=10)
+        self.done_listbox.pack(pady=10)
+        self.btn_edit = tk.Button(self.done_frame, text="Editar Tarefa", command=self.controller.edit_task, bg="#2196F3", fg="white", font=self.custom_font, relief="flat", width=15)
+        self.btn_edit.pack(side=tk.LEFT, padx=20, pady=10)
+
         # Progress
         self.progress = tk.Label(self.progress_frame, text='In Progress', font=("Arial", 12, "bold"))
         self.progress.pack()
@@ -87,13 +95,6 @@ class TaskView:
         self.btn_clear = tk.Button(self.progress_frame, text="Limpar Tarefas", command=self.controller.clear_tasks, bg="#FF9800", fg="white", font=self.custom_font, relief="flat", width=15)
         self.btn_clear.pack(side=tk.LEFT, padx=20, pady=10)
 
-        # Done
-        self.done = tk.Label(self.done_frame, text='Done', font=("Arial", 12, "bold"))
-        self.done.pack()
-        self.done_listbox = tk.Listbox(self.done_frame, width=30, height=10)
-        self.done_listbox.pack(pady=10)
-        self.btn_edit = tk.Button(self.done_frame, text="Editar Tarefa", command=self.controller.edit_task, bg="#2196F3", fg="white", font=self.custom_font, relief="flat", width=15)
-        self.btn_edit.pack(side=tk.LEFT, padx=20, pady=10)
 
     def update_task_list(self, tasks):
         self.tasks_frame.pack_forget()
