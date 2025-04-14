@@ -20,7 +20,9 @@ class TaskController:
             messagebox.showerror("Erro", "Nome de usuário inválido.")
 
     def show_tasks(self):
+        self.model.tasks = self.model.load_tasks()
         self.view.update_task_list(self.model.tasks)
+
 
     def logout(self):
         confirm = messagebox.askyesno("Confirmação", "Tem certeza que deseja sair?")
@@ -145,24 +147,36 @@ class TaskController:
                     cal.selection_set(task.due_date)
                 cal.pack(pady=10)
 
+                # Novo: Seleção da Etapa
+                tk.Label(edit_window, text="Etapa:", font=self.view.custom_font).pack(pady=5)
+                stage_combo = ttk.Combobox(edit_window, font=self.view.custom_font, state="readonly", values=("backlog", "todo", "progress", "done"))
+                stage_combo.pack(pady=5)
+                stage_combo.set(listbox_name)  # Define a etapa atual da tarefa
+
                 def save_changes():
                     new_task_name = task_entry.get().strip()
                     new_priority = priority_combo.get().strip()
                     new_category = category_entry.get().strip()
                     new_date_str = cal.get_date()
+                    new_stage = stage_combo.get().strip()
 
-                    if not new_task_name or not new_priority or not new_category:
+                    if not new_task_name or not new_priority or not new_category or not new_stage:
                         messagebox.showerror("Erro", "Todos os campos devem ser preenchidos!")
                         return
 
+                    # Atualiza os dados da tarefa
                     task.task = new_task_name
                     task.priority = new_priority
                     task.category = new_category
                     task.due_date = datetime.strptime(new_date_str, "%d/%m/%Y") if new_date_str else None
 
+                    # Remove a tarefa da listbox atual
                     listbox.delete(index)
-                    listbox.insert(
-                        index,
+
+                    # Adiciona na nova listbox selecionada
+                    new_listbox = listboxes[new_stage]
+                    new_listbox.insert(
+                        tk.END,
                         f"{task.task} - {task.priority} - {task.category} - {task.due_date.strftime('%d/%m/%Y') if task.due_date else 'Sem data'}"
                     )
 
